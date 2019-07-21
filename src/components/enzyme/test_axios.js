@@ -1,0 +1,23 @@
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+
+const TestAxios = props => {
+  const [state, setState] = useState()
+
+  useEffect(() => {
+    axios.get(props.url).then(res => setState(res.data))
+  }, [props.url])
+
+  return (
+    <div>
+      <h1> Axios Test </h1>
+      {state ? (
+        <p data-test="title">{state.title}</p>
+      ) : (
+        <p data-test="loader">...Loading</p>
+      )}
+    </div>
+  )
+}
+
+export default TestAxios
